@@ -41,8 +41,10 @@ export class UsersService {
     try {
       await this.usersRepository.findOne({ email: createUserDto.email });
     } catch (error) {
-      throw new UnprocessableEntityException('Email already exist!');
+      return;
     }
+
+    throw new UnprocessableEntityException('Email already exist!');
   }
 
   private async hashPassword(password: string) {
