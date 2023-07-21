@@ -19,6 +19,6 @@ export class UsersController {
   @Get('me')
   @UseGuards(JwtAuthGuard)
   async getUser(@CurrentUser() user: User) {
-    return user;
+    return new UserDto(user);
   }
 }
